@@ -33,7 +33,6 @@
           setChatMessages(newChatMessages);
 
           const response = Chatbot.getResponse(inputText);
-          console.log(response);
           setChatMessages([
             ...newChatMessages,
             {
@@ -46,12 +45,17 @@
           setInputText('');
         }
 
+        function keyHandle(event) {
+          {event.key === "Enter" && sendMessage()}
+        }
+
         return (
           <>
             <input 
               placeholder="Send a message to Chatbot" 
               size="30"
               onChange={saveInputText}
+              onKeyDown={keyHandle}
               value={inputText}
             />
             <button onClick={sendMessage}>Send</button>
