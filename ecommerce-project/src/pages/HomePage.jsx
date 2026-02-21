@@ -15,21 +15,12 @@ export function HomePage({ cart }) {
         });
     }, []);
 
-
-    let totalQuantity = 0;
-
-    console.log(cart)
-    cart.forEach((cartItem) => {
-        totalQuantity += cartItem.quantity
-    })
-
     return (
         <>
             <title>Homepage</title>
             <link rel="icon" href="/home-favicon.png" />
 
-            console.log(cart)
-            <Header cartQuantity={totalQuantity}/>
+            <Header cart={cart}/>
 
             <div className="home-page">
                 <div className="products-grid">
