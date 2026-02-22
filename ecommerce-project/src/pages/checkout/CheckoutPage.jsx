@@ -10,6 +10,12 @@ export function CheckoutPage({ cart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+      totalQuantity += cartItem.quantity
+  })
+
   useEffect(() => {
     const fetchCheckoutData = async () => {
       let response = await axios.get(
@@ -39,7 +45,7 @@ export function CheckoutPage({ cart }) {
 
           <div className="checkout-header-middle-section">
             Checkout (<Link className="return-to-home-link"
-              to="/">3 items</Link>)
+              to="/">{`${totalQuantity} items`}</Link>)
           </div>
 
           <div className="checkout-header-right-section">
